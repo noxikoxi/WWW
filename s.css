@@ -1,0 +1,33 @@
+body{
+    background-color: coral;
+    padding: 2px;
+}
+
+#main_content {
+    background-color: green;
+}
+
+ul {
+    list-style-type: none;
+}
+
+header{
+
+}
+
+header h1{
+
+}
+
+#menu li {
+    background-color: gold;
+    border: 2px solid blue;
+    margin: 5px;
+    padding: 0;
+    font-size: 20px;
+    width:160px;
+}
+
+#menu a:hover{
+    font-weight: bold;
+}
