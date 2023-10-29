@@ -19,11 +19,14 @@ ul {
 header{
     background-color: #5ad396;
     border: #444d3b 2px solid;
+
+    font-family: Cambria, sans-serif;
 }
 
 header h1{
     float: left;
     margin-left: 20px;
+    color: #6600cb;
 }
 
 header::after {
@@ -44,6 +47,7 @@ header::after {
     text-transform: uppercase;
     font-size: 18px;
     color: #30099d;
+
 }
 
 #menu li a::before{
@@ -68,5 +72,47 @@ nav {
 }
 
 #main_content {
-    margin-left: 20px;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+footer {
+    height: 30px;
+    background-color: #3b6903;
+}
+
+footer span {
+    margin: 10px;
+}
+
+img {
+    width:90%;
+    height: auto;
+}
+
+#text {
+    width:50%;
+    border:2px dashed white;
+}
+
+#images {
+    border: 4px dashed black;
+    width: 50%;
+    text-align: center;
+}
+
+/*img::after{*/
+/*    clear: both;*/
+/*    display:table;*/
+/*    content: "";*/
+/*}*/
+
+
+figcaption {
+    font-style: italic;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
 }
