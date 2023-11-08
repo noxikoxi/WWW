@@ -21,20 +21,51 @@
         </nav>
     </header>
 
-    <div id="main_content" style="flex-direction: column; text-align: center;">
-        <h3>Zadaj nam pytanie!</h3>
-        <hr style="margin-left: -20px;"/>
+    <div id="main_content" style="flex-direction: row">
 
-        <form method="GET">
-            <p><input type="text" name="x"/></p>
-            <p><input type="submit" name="submit"/></p>
+        <div class="left" style="width: 30%; padding-left: 10px">
+            <p><span style="font-weight: bold">Adres:</span>  al. Matki Bożej Fatimskiej 10, 34-100 Wadowice  </p>
+            <p><span style="font-weight: bold">Email:</span> naszaBiblioteka@gmail.com</p>
+            <span>Biblioteka jest otwarta w godzinach:</span>
+            <ul>
+                <li>Poniedziałek: &emsp; 9:00-17:00</li>
+                <li>Wtorek: &emsp; 8:00-16:00</li>
+                <li>Środa: &emsp; 9:00-17:00</li>
+                <li>Czwartek: &emsp; 7:00-14:00</li>
+                <li>Piątek: &emsp; 9:00-15:00</li>
+                <li>Sobota: &emsp; nieczynne</li>
+                <li>Niedziela: &emsp; nieczynne</li>
+            </ul>
+        </div>
+
+        <div class="right" style="flex-direction: column; text-align: center; width:auto;">
+        <h3>Odczuwasz niedosyt czytelniczych newsów? Pytaj lub od razu stwórz konto czytelnika, aby być na bieżąco!</h3>
+
+        <form method="GET" action="mailto:naszMail@gmail.com" enctype="text/plain" name="emailForm">
+            <label for="message">Wiadomość<br>
+                <textarea id="message" rows="6" cols="22">
+                    Tutaj wpisz treść wiadomości
+                </textarea>
+            </label>
+            <p><input type="submit" name="submit" value="Wyslij"/></p>
         </form>
+        </div>
     </div>
 
 
-<footer>
-    <span><small>Projekt HTML5</small></span>
-</footer>
+    <footer>
+        <div id="working_hours">
+            <small><span>Biblioteka czynna:</span>
+                <ul>
+                    <li>Poniedziałek: &emsp; 9:00-17:00</li>
+                    <li>Wtorek: &emsp; 8:00-16:00</li>
+                    <li>Środa: &emsp; 9:00-17:00</li>
+                    <li>Czwartek: &emsp; 7:00-14:00</li>
+                    <li>Piątek: &emsp; 9:00-15:00</li>
+                </ul>
+            </small>
+        </div>
+    </footer>
 </div>
 </body>
 </html>
