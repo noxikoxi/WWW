@@ -1,79 +1,185 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Biblioteka</title>
-  <link href="s.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Biblioteka</title>
+    <link href="ss.css" rel="stylesheet"/>
+    <style>
+        .lista{
+            text-align: center;
+            font-weight: bold;
+        }
+        figure figcaption{
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        figure img {
+            height: 200px;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<div id="main">
-  <header>
-    <h1>Lista Książek</h1>
-    <nav>
-      <ul id="menu">
-        <li><a href="index.html">Główna</a></li>
-        <li><a href="lista.html">Lista Książek</a></li>
-        <li><a href="czytelnik.html">Konto Czytelnika</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="projekty.html">Projekty</a></li>
-      </ul>
-
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+        <div class="container-fluid">
+            <a href="" class="navbar-brand fs-3 ms-3 text-light">Lista Książek</a>
+            <button class="navbar-toggler me-5 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon bx"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link mx-4 fs-5" >Główna</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="lista.html" class="nav-link mx-4 fs-5 active" aria-current=page">Lista Książek</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="czytelnik.html" class="nav-link mx-4 fs-5">Konto Czytelnika</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kontakt.html" class="nav-link mx-4 fs-5">Kontakt</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="projekty.html" class="nav-link mx-4 fs-5">Projekty</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-  </header>
-    <div id="main_content" style="flex-direction: column; text-align: center;">
-      <h3> Witaj wśród prawdziwych książkoholików! </h3>
-      <div class="box" style="display:flex; flex-direction: row">
-        <div class="left" style="width:33%">
-          <h3>Top 5 Fantasy</h3>
-          <ol>
-            <li><p> Clare Cassandra "Kroniki Bane'a"</p></li>
-            <li><p> Flanagan John "Zagubione Historie"</p></li>
-            <li><p> Riordan Rick "Magnus Chase i Bogowie Asgardu"</p></li>
-            <li><p> Reynolds Anthony "Zrujnowanie"
-            <li><p> Sapkowski Andrzej "Miecz Lata"
-            </p></li>
-          </ol>
+    <div class="container-fluid bg-body-secondary" id="main">
+        <h3 style="text-align: center"> Witaj wśród prawdziwych książkoholików! </h3>
+        <div class="row">
+        <div class="col-md-4 col-sm-12">
+            <p class="h3 text-center">Top 5 Fantasy</p>
+              <ol class="lista">
+                <li>
+                    <p> Clare Cassandra "Kroniki Bane'a"</p>
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image//c/the-bane-chronicles-b-iext43310032.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                </li>
+                <li>
+                    <p> Flanagan John "Zagubione Historie"</p>
+                    <figure>
+                        <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/zwiadowcy-ksiega-11-zaginione-historie-b-iext139876708.jpg" alt="Zdjęcie okładki">
+                        <figcaption>Okładka</figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <p> Riordan Rick "Magnus Chase i Bogowie Asgardu"</p>
+                    <figure>
+                        <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/miecz-lata-magnus-chase-i-bogowie-asgardu-tom-1-b-iext123494203.jpg" alt="Zdjęcie okładki">
+                        <figcaption>Okładka</figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <p> Reynolds Anthony "Zrujnowanie"</p>
+                    <figure>
+                        <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/league-of-legends-zrujnowanie-b-iext140100404.jpg" alt="Zdjęcie okładki">
+                        <figcaption>Okładka</figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <p> Sapkowski Andrzej "Wiedzmin: Miecz Przeznaczenia"</p>
+                    <figure>
+                        <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/miecz-przeznaczenia-wiedzmin-tom-2-b-iext126701596.jpg" alt="Zdjęcie okładki">
+                        <figcaption>Okładka</figcaption>
+                    </figure>
+                </li>
+              </ol>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <p class="h3" style="text-align: center">Top 5 Romans młodzieżowy</p>
+              <ol class="lista">
+                  <li>
+                      <p> Cass Kiera "Rywalki"</p>
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/rywalki-rywalki-tom-1-b-iext140217394.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                  </li>
+                  <li>
+                      <p> Forman Gayle "Zostań jesli kochasz"</p>
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/zostan-jesli-kochasz-wroc-jesli-pamietasz-b-iext124354836.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                  </li>
+                  <li>
+                      <p> Green John "Gwiazd Naszych Wina"</p>
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/gwiazd-naszych-wina-b-iext132889185.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                  </li>
+                  <li>
+                      <p> Musso Guillaumie "Papierowa Dziewczyna"</p>
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/papierowa-dziewczyna-b-iext123053209.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                  </li>
+                  <li>
+                      <p> Sparks Nicholas "Ostatnia Piosenka"</p>
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/ostatnia-piosenka-b-iext123060274.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                  </li>
+              </ol>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <p class="h3" style="text-align: center">Top 5 Kryminał</p>
+              <ol class="lista">
+                  <li>
+                      <p>Bonda Katarzyna "Sprawa Niny Frank"</p>
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/sprawa-niny-frank-b-iext132053614.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                  </li>
+                  <li>
+                      <p>Child Lee "Wróg bez twarzy"</p>
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/wrog-bez-twarzy-jack-reacher-tom-3-b-iext122555213.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                  </li>
+                  <li>
+                      <p>Christie Agatha "I nie było już nikogo"</p>
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/i-nie-bylo-juz-nikogo-b-iext133195259.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                  </li>
+                  <li>
+                      <p>Nesbo Jo "Czerwone Gardło" </p>
+
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/czerwone-gardlo-harry-hole-tom-3-b-iext135668115.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                  </li>
+                  <li>
+                      <p>Mróz Remigiusz "Listy zza Grobu"</p>
+                      <figure>
+                          <img class="rounded" src="https://ecsmedia.pl/cdn-cgi/image/width=544,height=544,/c/listy-zza-grobu-seweryn-zaorski-tom-1-b-iext137834958.jpg" alt="Zdjęcie okładki">
+                          <figcaption>Okładka</figcaption>
+                      </figure>
+                  </li>
+              </ol>
+        </div>
 
         </div>
-        <div class="mid" style="width:33%">
-          <h3>Top 5 Romans młodzieżowy</h3>
-          <ol>
-            <li><p> Cass Kiera "Rywalki"</p></li>
-            <li><p> Forman Gayle "Zostań jesli kochasz"</p></li>
-            <li><p> Green John "Gwiazd Naszych Wina"</p></li>
-            <li><p> Musso Guillaumie "Papiertowa Dziewczyna"</p></li>
-            <li><p> Sparks Nicholas "Ostatnia Piosenka"</p></li>
-          </ol>
-
-        </div>
-        <div class="right" style="width:33%">
-          <h3>Top 5 Kryminał</h3>
-          <ol>
-            <li><p>Bonda Katarzyna "Sprawa Niny Frank"</p></li>
-            <li><p>Child Lee "Wróg bez twarzy"</p></li>
-            <li><p>Christie Agatha "I nie było już nikogo"</p></li>
-            <li><p>Nesbo Jo "Czerwone Gardło" </p></li>
-            <li><p>Mróz Remigiusz "Listy zza Grobu"  </p></li>
-            <li><p></p></li>
-          </ol>
-
-        </div>
-      </div>
     </div>
-
-  <footer>
-    <div id="working_hours">
-      <small><span>Biblioteka czynna:</span>
-        <ul>
-          <li>Poniedziałek: &emsp; 9:00-17:00</li>
-          <li>Wtorek: &emsp; 8:00-16:00</li>
-          <li>Środa: &emsp; 9:00-17:00</li>
-          <li>Czwartek: &emsp; 7:00-14:00</li>
-          <li>Piątek: &emsp; 9:00-15:00</li>
-        </ul>
-      </small>
-    </div>
-  </footer>
-</div>
+    <script>
+        fetch('footer.html')
+            .then(response=> response.text())
+            .then(text=> document.body.insertAdjacentHTML('beforeend', text));
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
