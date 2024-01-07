@@ -1,0 +1,106 @@
+extends pokedex
+
+block additionalScripts
+    script.
+        window.onload = function () {
+            abilities = document.querySelectorAll('.addDescription');
+            abilities.forEach(ability => {
+                fetch("https://pokeapi.co/api/v2/ability/" + ability.innerHTML)
+                    .then(res => res.json())
+                    .then(res => {
+                        let text = "";
+
+                        res.effect_entries.forEach(effect => {
+                            if (effect.language.name === "en") {
+                                text = effect.effect;
+                            }
+                        })
+                        return text;
+
+                    }).then(res => {
+                    ability.setAttribute("data-bs-content", res);
+                    afterFetching();
+                })
+            })
+            let evoName = document.getElementById("addEvolutionName");
+            let evoImage = document.getElementById("addEvolutionImage");
+            fetch("https://pokeapi.co/api/v2/pokemon-species/" + #{id})
+                .then((res => res.json()))
+                .then(res => fetch(res.evolution_chain.url))
+                .then(res => res.json())
+                .then((res) => {
+                    let name = res.chain.evolves_to[0].evolves_to[0].species.name;
+                    evoName.innerHTML = name;
+                    evoName.setAttribute("href", "/pokedex/" + name);
+                    return name;
+                }).then(res => fetch("https://pokeapi.co/api/v2/pokemon/" + res))
+                .then(res => res.json())
+                .then(res => {
+                    evoImage.setAttribute("src", res.sprites.front_default);
+                })
+
+            function afterFetching() {
+                var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'));
+                popoverTriggerList.map(function (popoverTriggerEl) {
+                    return new bootstrap.Popover(popoverTriggerEl);
+                });
+            }
+        }
+
+block info
+    div.row.d-flex.justify-content-center
+        table.table.table-success.border-4
+            tbody
+                tr
+                    td.align-middle
+                        p.fs-3(style="font-weight: bold") #{title}
+                        p.fs-4 Bazowe Statystyki
+                        table.table.table-striped.table-bordered
+                            tbody
+                                each stat in stats
+                                    tr
+                                        td.align-middle
+                                            p.m-0 #{stat.stat.name}
+                                        td.align-middle
+                                            p.m-0 #{stat.base_stat}
+                    td
+                        div.row
+                            div.col-12.col-md-6.m-0
+                                img.col-6.m-0.p-0(src=spriteUrl.front_default, alt=title)
+                                img.col-6.m-0.p-0(src=spriteUrl.back_default, alt=title)
+                                i.p-0 zwykły
+                            div.col-12.col-md-6.m-0
+                                img.col-6.m-0.p-0(src=spriteUrl.front_shiny, alt=title)
+                                img.col-6.m-0.p-0(src=spriteUrl.back_shiny, alt=title)
+                                i.p-0 shiny
+                tr
+                    td(colspan=2)
+                        ul.fs-3.p-0(style="list-style-type:None")
+                            li
+                                span inne statystyki:
+                            li
+                                span ID: #{id}
+                            li
+                                - var w = weight/10
+                                span Waga: #{w}kg
+                            li
+                                - var z = height / 10
+                                span Wzrost: #{z}m
+                            li
+                                span Typy:&nbsp
+                                each type in types
+                                    span #{type.type.name}&nbsp
+                            li
+                                span Umiejętności:&nbsp
+                                each ability in abilities
+                                    a.addDescription(data-bs-trigger="hover",  data-toggle="popover", data-bs-placement="bottom",
+                                        title="Opis Umiejętności", data-bs-content="Opis...", style="text-decoration:None") #{ability.ability.name}
+                                    span &nbsp
+                            li
+                                span Ewolucja:&nbsp
+                                    a(id="addEvolutionName", style="text-decoration:None") ...&nbsp
+                                img(src="", alt="image", id="addEvolutionImage")
+
+
+
+

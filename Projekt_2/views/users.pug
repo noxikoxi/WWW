@@ -1,0 +1,22 @@
+extends layout
+
+block navScript
+    script.
+        var nav = document.getElementById('users');
+        nav.classList.add('active');
+        nav.setAttribute('aria-current', 'page');
+
+block content
+    div.row
+        h3(style="text-align:center") Zaloguj się aby móc dodawać pokemony do swojego konta
+        form(method="POST" action="/login")
+            div.mb-3
+                label.form-label(for="username") Nazwa Użytkownika
+                input.form-control(id="username", placeholder="username" type="text")
+            div.mb-3
+                label.form-label(for="passwordInput") Hasło
+                input.form-control(id="passwordInput", placeholder="******" type="password")
+                div.form-text.mt-0(id="textAreaHelp") Nie masz jescze konta?
+                    a(href="/register" style="text-decoration: None;")  Zarejestruj się
+            button.btn.btn-danger.mb-3(type="submit") Zaloguj się
+

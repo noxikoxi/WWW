@@ -1,0 +1,40 @@
+extends layout
+
+block scripts
+    script.
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById("submitForm").addEventListener('submit', function (event) {
+                event.preventDefault();
+                const inputValue = document.getElementById('input').value.toLowerCase();
+
+                this.action = `/pokedex/${inputValue}`;
+
+                this.submit();
+            });
+        })
+
+    block additionalScripts
+
+
+block navScript
+    script.
+        var nav = document.getElementById('pokedex');
+        nav.classList.add('active');
+        nav.setAttribute('aria-current', 'page');
+block content
+    div.row
+        h3(style="text-align: center") Wyszukaj pokemona po jego nazwie albo ID
+    div.row
+        form.d-flex(method="GET" action='pokedex' id='submitForm')
+            div.mx-auto.mt-2
+                div.mb-3.mx-auto
+                    input.form-control.mx-auto(type='text' placeholder='Nazwa Pokemona' id='input')
+                    div.form-text.mt-0(id="textAreaHelp") Nie znasz jeszcze nazwa pokemonów?
+                        a(href="/pokedex/pokemons?generation=1" style="text-decoration: None;")  Zobacz nasza liste
+                div.mb-3.mx-auto
+                    button.btn.btn-danger(type='submit' style='width:100%') Szukaj
+
+    div.container-fluid(style="text-align: center")
+        if mess
+            h3.mb-0.pb-5 #{mess}
+        block info

@@ -1,8 +1,15 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.nav-item {
+  font-family: "Georgia","Arial Narrow", sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.nav-item a:hover{
+  color: #DDD !important;
+}
+
+.active{
+  font-weight: bold !important;
+}
+
+footer{
+  background-color: rgba(197, 170, 167, 0.47);
 }
