@@ -1,9 +1,13 @@
 .nav-item {
-  font-family: "Georgia","Arial Narrow", sans-serif;
+  font-family: "Georgia","Arial Narrow", sans-serif !important;
 }
 
 .nav-item a:hover{
   color: #DDD !important;
+}
+
+#main{
+  flex: 1;
 }
 
 .active{
@@ -12,4 +16,14 @@
 
 footer{
   background-color: rgba(197, 170, 167, 0.47);
+  flex-shrink: 0;
+  text-align: center;
+}
+
+a{
+  text-decoration: None !important;
+}
+
+ul{
+  list-style-type: None !important;
 }

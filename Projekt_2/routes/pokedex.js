@@ -7,10 +7,8 @@ var router = express.Router();
 router.get('/pokemons', async function(req, res, next) {
     try{
         const genNum = await req.query.generation;
-        console.log(genNum);
         const response = await fetch('https://pokeapi.co/api/v2/generation/' + genNum);
 
-        console.log(response);
         const data = await response.json();
 
         let pokemonList = await data.pokemon_species;
@@ -33,20 +31,23 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.get('/:name', async function(req, res, next) {
+router.get('/:name',function(req, res, next) {
     try{
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${req.params.name}/`);
-        let data = await response.json();
-        await res.render('pokemonInfo', {
-            title : data.name[0].toUpperCase() + data.name.slice(1),
-            types : data.types,
-            spriteUrl :data.sprites,
-            stats : data.stats,
-            id : data.id,
-            abilities : data.abilities,
-            weight : data.weight,
-            height : data.height
-        })
+
+        fetch(`https://pokeapi.co/api/v2/pokemon/${req.params.name}/`)
+            .then(result => result.json())
+            .then(data => {
+                res.render('pokemonInfo', {
+                    title : data.name[0].toUpperCase() + data.name.slice(1),
+                    types : data.types,
+                    spriteUrl :data.sprites,
+                    stats : data.stats,
+                    id : data.id,
+                    abilities : data.abilities,
+                    weight : data.weight,
+                    height : data.height
+                })
+            })
     }
     catch (error){
         // render the error page
