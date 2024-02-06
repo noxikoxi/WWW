@@ -1,100 +1,7 @@
 extends pokedex
 
 block additionalScripts
-    script.
-        window.onload = function () {
-            // Umiejętności
-            try{
-                abilities = document.querySelectorAll('.addDescription');
-                abilities.forEach(ability => {
-                    fetch("https://pokeapi.co/api/v2/ability/" + ability.innerHTML)
-                        .then(res => res.json())
-                        .then(res => {
-                            let text = "";
-
-                            res.effect_entries.forEach(effect => {
-                                if (effect.language.name === "en") {
-                                    text = effect.effect;
-                                }
-                            })
-                            return text;
-
-                        }).then(res => {
-                        ability.setAttribute("data-bs-content", res);
-                        afterFetching();
-                    })
-                })
-            }catch(error)
-            {
-                document.querySelectorAll('.addDescription').forEach(
-                    effect => effect.setAttribute("data-bs-content", "Bład Pobierania Danych")
-                )
-            }
-
-            // Ewolucje
-            try{
-                fetch("https://pokeapi.co/api/v2/pokemon-species/" + #{id})
-                    .then((res => res.json()))
-                    .then(res => fetch(res.evolution_chain.url))
-                    .then(res => res.json())
-                    .then((res) => {
-                        let chainSpecies = res.chain;
-                        console.log(chainSpecies);
-                        while (chainSpecies.species.name !== document.getElementById("name").innerHTML.toLowerCase()) {
-                            chainSpecies = chainSpecies.evolves_to[0];
-                        }
-
-                        return chainSpecies.evolves_to
-                    })
-                    .then( chain => {
-
-                        let evolNum = chain.length;
-                        let evolutionLists = document.getElementById("Evolutions");
-
-                        if (evolNum > 0)
-                        {
-                            document.getElementById('removeable').remove();
-                        }
-
-                        for(let i=0; i< evolNum; ++i)
-                        {
-                            let elem = document.createElement('li');
-                            let innerElem = document.createElement('a');
-                            innerElem.setAttribute('href', `${chain[i].species.name}`);
-                            innerElem.classList.add('pe-2');
-                            innerElem.innerHTML = `${chain[i].species.name}`;
-                            elem.appendChild(innerElem);
-                            evolutionLists.appendChild(elem);
-                        }
-
-                        return evolutionLists;
-                        })
-                    .then(res => {
-                        res.childNodes.forEach(child => {
-                            let elem = document.createElement('img');
-                            fetch('https://pokeapi.co/api/v2/pokemon/' + String(child.lastChild).split('/')[4])
-                            .then(res => res.json())
-                            .then(res => res.sprites.front_default)
-                            .then(url => {
-                                elem.setAttribute('src', url);
-                                child.appendChild(elem);
-                            })
-
-                        })
-                    })
-
-            }catch(error){
-                document.getElementById("addEvolutionName").innerHTML = #{title};
-                document.getElementById("addEvolutionImage").setAttribute("hidden", 'true');
-            }
-
-            function afterFetching() {
-                var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'));
-                popoverTriggerList.map(function (popoverTriggerEl) {
-                    return new bootstrap.Popover(popoverTriggerEl);
-                });
-            }
-        }
+    script(src="/javascripts/pokedexMoreInfo.js")
 
 block info
     div.row.d-flex.justify-content-center
@@ -115,12 +22,14 @@ block info
                     td.align-middle
                         div.row
                             div.col-12.col-lg-6.m-0
-                                img.col-6.m-0.p-0(src=spriteUrl.front_default, alt=title)
-                                img.col-6.m-0.p-0(src=spriteUrl.back_default, alt=title)
+                                img.col-6.m-0.p-0(src=spriteUrl.front_default, alt="obrazek z przodu")
+                                if id < 921
+                                    img.col-6.m-0.p-0(src=spriteUrl.back_default, alt="obrazek z tyłu")
                                 i.p-0 zwykły
                             div.col-12.col-lg-6.m-0
-                                img.col-6.m-0.p-0(src=spriteUrl.front_shiny, alt=title)
-                                img.col-6.m-0.p-0(src=spriteUrl.back_shiny, alt=title)
+                                img.col-6.m-0.p-0(src=spriteUrl.front_shiny, alt="obrazek z przodu")
+                                if id < 921
+                                    img.col-6.m-0.p-0(src=spriteUrl.back_shiny, alt="obrazek z tyłu")
                                 i.p-0 shiny
                 tr
                     td(colspan=2)
@@ -142,13 +51,17 @@ block info
                             li
                                 span Umiejętności:&nbsp
                                 ul.d-flex.flex-lg-row.flex-column.justify-content-center.p-0
-                                    each ability in abilities
-                                        li
-                                            a.addDescription.pe-2(data-bs-trigger="hover",  data-toggle="popover", data-bs-placement="bottom",
-                                                title="Opis Umiejętności", data-bs-content="Opis...") #{ability.ability.name}
+                                each ability, index in abilities
+                                    li
+                                        a.pe-2(data-bs-trigger="hover",  data-toggle="popover", data-bs-placement="bottom",
+                                            title="Opis Umiejętności", data-bs-content=abilitiesDesc[index]) #{ability.ability.name}
                             li
                                 span Ewolucje:
                                 ul.d-flex.flex-lg-row.flex-column.justify-content-center.p-0(id="Evolutions")
-                                    p(id="removeable") Brak
-
-
+                                    each evolution, index in evolutionNames
+                                        li
+                                            - const link = "/pokedex/" + evolution
+                                            a.pe-2(href=link) #{evolution}
+                                            img(src=evolutionImages[index], alt="obrazek pokemona")
+                                    if evolutionNames.length === 0
+                                        p(id="removeable") Brak

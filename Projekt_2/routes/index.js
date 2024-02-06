@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var announcementsService = require("../services/announcementsService");
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', announcementsService.getAnnouncements);
 
 module.exports = router;

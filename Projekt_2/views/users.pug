@@ -1,10 +1,8 @@
 extends layout
 
-block navScript
-    script.
-        var nav = document.getElementById('users');
-        nav.classList.add('active');
-        nav.setAttribute('aria-current', 'page');
+block scripts
+    script(src="/javascripts/usersScript.js")
+
 
 block content
     div.row
