@@ -1,0 +1,31 @@
+extends layout
+block scripts
+    script(src="/javascripts/usersScript.js")
+block content
+    div.row(style='width:100%; text-align:center;')
+        div.col-12.col-md-6.m-0
+            p.fs-3 Twój ekwipunek
+            if names.length > 0
+                table.table.table-striped.table-bordered
+                    tbody
+                        each pokemon, index in names
+                            tr
+                                td.align-middle #{pokemon}
+                                td
+                                    img(src=imgs[index], alt=pokemon)
+            hr
+        div.col-12.col-md-6.m-0
+            p.fs-3.m-0 Maszyna Losująca
+            p.fs-5 Po naciśnięciu przycisku zostanie wylosowany losowy pokemon.<br> Następnie można dodać go do swojego ekwipunku.
+            div.d-flex.justify-content-center.mt-2
+                form(action='/users/randomPokemon', method='GET', id="randomForm")
+                    button.btn.btn-danger( type='submit') Wylosuj Pokemona
+            hr
+            if name !== undefined
+                div.d-flex.justify-content-center.mt-3.flex-column
+                    p.fs-3.fw-bold #{name}
+                    div(style="height:300px")
+                        img.img-fluid.h-100(src=img, alt='obrazek pokemona')
+
+                - let temp = "/users/addPokemon?id=" + id
+                a.btn.btn-danger(href=temp) Dodaj Pokemona do ekwipunku

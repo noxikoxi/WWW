@@ -1,15 +1,30 @@
+if (process.env.NODE_ENV !== 'production' )
+{
+    require('dotenv').config();
+}
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 const favicon = require('serve-favicon');
+const passport = require('passport');
+const initializePassport = require('./services/passport-config');
+const flash = require('express-flash');
+const session = require('express-session');
+const methodOverride = require('method-override');
+
+const {findUserByEmail, findUserById} = require("./services/databaseService");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var pokedexRouter = require('./routes/pokedex');
 
 var app = express();
+
+initializePassport(passport, findUserByEmail, findUserById);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));  // Express is looking there for views files
@@ -23,6 +38,16 @@ app.use(express.urlencoded({ extended: false }));  // Parses data from forms, ex
 app.use(cookieParser());  // Middleware which parses cookies
 app.use(express.static(path.join(__dirname, 'public')));  // Middleware, which serves static web pages
 
+app.use(flash())
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(methodOverride('_method'));
 
 
 app.use('/', indexRouter);

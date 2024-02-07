@@ -1,28 +1,10 @@
-const sqlite3 = require('sqlite3').verbose()
+const databaseService = require("./databaseService");
 
-closeConnection = function (db){
-    db.close((err) => {
-        if (err) {
-            console.error(err.message);
-        }
-        console.log('Closed the database connection.');
-    });
-}
-
-openDatabase = function (){
-    return new sqlite3.Database("./database/pokebase.db", sqlite3.OPEN_READONLY, (err) => {
-        if (err) {
-            console.error(err.message)
-        } else {
-            console.log('Connected to database.');
-        }
-    });
-}
 
 const getAnnouncements = (req, res, next) => {
     const sql = "SELECT tytul, tekst from Ogłoszenia where czyWyswietlic = 1 ORDER BY id DESC";
 
-    const db = openDatabase();
+    const db = databaseService.openDatabase(true);
 
 
     db.all(sql, [], (err, rows) => {
@@ -33,9 +15,9 @@ const getAnnouncements = (req, res, next) => {
         }
     })
 
-    closeConnection(db);
+    databaseService.closeConnection(db);
 }
 
 module.exports = {
-    getAnnouncements
+    getAnnouncements,
 }
