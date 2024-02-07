@@ -12,7 +12,8 @@ function generatePokemon(req, res, next)
                     id: data.id,
                     img: data.sprites.front_default,
                     logged: true,
-                    user: await req.user
+                    user: await req.user,
+                    title: "Twoje Konto"
                 }));
             })
     } catch{

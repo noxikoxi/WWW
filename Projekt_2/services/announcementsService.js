@@ -11,7 +11,7 @@ const getAnnouncements = (req, res, next) => {
         if (err) {
             throw err;
         } else {
-            res.render('index', {data: rows});
+            res.render('index', {title: "Aktualności", data: rows});
         }
     })
 

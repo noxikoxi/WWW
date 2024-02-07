@@ -3,7 +3,7 @@ block scripts
     script(src="/javascripts/usersScript.js")
 block content
     div.row(style='width:100%; text-align:center;')
-        div.col-12.col-md-6.m-0
+        div.col-12.col-md-6.m-0.order-2.order-md-1
             p.fs-3 Twój ekwipunek
             if names.length > 0
                 table.table.table-striped.table-bordered
@@ -13,8 +13,8 @@ block content
                                 td.align-middle #{pokemon}
                                 td
                                     img(src=imgs[index], alt=pokemon)
-            hr
-        div.col-12.col-md-6.m-0
+                hr
+        div.col-12.col-md-6.m-0.order-1
             p.fs-3.m-0 Maszyna Losująca
             p.fs-5 Po naciśnięciu przycisku zostanie wylosowany losowy pokemon.<br> Następnie można dodać go do swojego ekwipunku.
             div.d-flex.justify-content-center.mt-2

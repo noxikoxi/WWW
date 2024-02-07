@@ -108,7 +108,7 @@ async function loadInventory (req) {
 }
 
 async function showInventory(req, res, next) {
-    res.render('inventory', Object.assign({}, {user: await req.user, logged: true},
+    res.render('inventory', Object.assign({}, {title: "Twoje Konto", user: await req.user, logged: true},
         await loadInventory(req)));
 }
 
