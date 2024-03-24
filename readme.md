@@ -1,11 +1,11 @@
-# Projekty na zajęcia z Technik WWW
+# WebDev Projects
 
-## Projekt_1 -> Strona Statyczna
+## Projekt_1 -> Static site
 - html
 - css
 - javascript
 
-## Projekt_2 -> Strona Dynamiczna
+## Projekt_2 -> Dynamic site
 - pug
 - javascript
 - css
