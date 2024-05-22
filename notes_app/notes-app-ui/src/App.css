@@ -1,0 +1,107 @@
+body{
+    margin: 20px;
+    padding: 0;
+    background: #454f32;
+}
+
+.app-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 600px){
+    .app-container{
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 20px;
+    }
+
+}
+
+.notes-grid{
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(250px, 1fr)
+    );
+    grid-auto-rows: minmax(250px, auto);
+    gap:20px;
+}
+
+.notes-item{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background: honeydew;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+}
+
+.notes-header{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.notes-header button{
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    max-width: fit-content;
+}
+
+h2{
+    margin: 0;
+}
+
+.note-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.note-form  * {
+    border-radius: 5px;
+}
+
+textarea, input {
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.note-form button{
+    background-color: #e0c648;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.note-form button:hover{
+    background-color: #cbdcbf;
+    cursor: pointer;
+}
+
+.edit-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+
+.edit-buttons button{
+    flex:1;
+}
+
+.edit-buttons .cancel-button{
+    background-color: #e83838;
+}
+.edit-buttons .cancel-button:hover{
+    background-color: #a60404;
+}

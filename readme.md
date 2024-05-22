@@ -1,6 +1,6 @@
 # WebDev Projects
 
-## Projekt_1 -> Static site
+## Static site
 - html
 - css
 - javascript
@@ -8,7 +8,7 @@
 
 <img src="biblio.png" alt="drawing"/>
 
-## Projekt_2 -> Dynamic site
+## Dynamic site
 - pug
 - javascript
 - css
@@ -23,3 +23,11 @@
 - react
 
   <img src="todo.png" alt="drawing"/>
+
+## Notes App
+- react
+- prisma
+- Express.js
+- to work a database_url is needed (.env file)
+
+  <img src="notes.png" alt="drawing"/>
