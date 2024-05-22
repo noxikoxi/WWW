@@ -1,0 +1,24 @@
+extends layout
+
+block scripts
+    script(src='/javascripts/formScript.js')
+
+    block additionalScripts
+
+block content
+    div.row
+        h3(style="text-align: center") Wyszukaj pokemona po jego nazwie albo ID
+    div.row.align-middle
+        form.d-flex(method="GET" action='pokedex' id='submitForm')
+            div.mx-auto.mt-2
+                div.mb-3.mx-auto
+                    input.form-control.mx-auto(type='text' placeholder='Nazwa Pokemona' id='input')
+                    div.form-text.mt-0(id="textAreaHelp") Nie znasz jeszcze nazw pokemonów?
+                        a(href="/pokedex/pokemons?generation=1" style="text-decoration: None;")  Zobacz naszą listę!
+                div.mb-3.mx-auto
+                    button.btn.btn-danger(type='submit' style='width:100%') Szukaj
+
+    div.container-fluid(style="text-align: center")
+        if mess
+            h3.mb-0.pb-5 #{mess}
+        block info

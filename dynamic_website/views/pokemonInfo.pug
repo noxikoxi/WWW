@@ -1,0 +1,67 @@
+extends pokedex
+
+block additionalScripts
+    script(src="/javascripts/pokedexMoreInfo.js")
+
+block info
+    div.row.d-flex.justify-content-center
+        table.table.table-success.border-4
+            tbody
+                tr
+                    td.align-middle
+                        p.fs-3(style="font-weight: bold" id='name') #{title}
+                        p.fs-4 Bazowe Statystyki
+                        table.table.table-striped.table-bordered
+                            tbody
+                                each stat in stats
+                                    tr
+                                        td.align-middle
+                                            p.m-0 #{stat.stat.name}
+                                        td.align-middle
+                                            p.m-0 #{stat.base_stat}
+                    td.align-middle
+                        div.row
+                            div.col-12.col-lg-6.m-0
+                                img.col-6.m-0.p-0(src=spriteUrl.front_default, alt="obrazek z przodu")
+                                if id < 921
+                                    img.col-6.m-0.p-0(src=spriteUrl.back_default, alt="obrazek z tyłu")
+                                i.p-0 zwykły
+                            div.col-12.col-lg-6.m-0
+                                img.col-6.m-0.p-0(src=spriteUrl.front_shiny, alt="obrazek z przodu")
+                                if id < 921
+                                    img.col-6.m-0.p-0(src=spriteUrl.back_shiny, alt="obrazek z tyłu")
+                                i.p-0 shiny
+                tr
+                    td(colspan=2)
+                        ul.fs-3.p-0
+                            li
+                                span inne statystyki:
+                            li
+                                span ID: #{id}
+                            li
+                                - var w = weight/10
+                                span Waga: #{w}kg
+                            li
+                                - var z = height / 10
+                                span Wzrost: #{z}m
+                            li
+                                span Typy:&nbsp
+                                each type in types
+                                    span #{type.type.name}&nbsp
+                            li
+                                span Umiejętności:&nbsp
+                                ul.d-flex.flex-lg-row.flex-column.justify-content-center.p-0
+                                each ability, index in abilities
+                                    li
+                                        a.pe-2(data-bs-trigger="hover",  data-toggle="popover", data-bs-placement="bottom",
+                                            title="Ability Description", data-bs-content=abilitiesDesc[index]) #{ability.ability.name}
+                            li
+                                span Ewolucje:
+                                ul.d-flex.flex-lg-row.flex-column.justify-content-center.p-0(id="Evolutions")
+                                    each evolution, index in evolutionNames
+                                        li
+                                            - const link = "/pokedex/" + evolution
+                                            a.pe-2(href=link) #{evolution}
+                                            img(src=evolutionImages[index], alt="obrazek pokemona")
+                                    if evolutionNames.length === 0
+                                        p(id="removeable") Brak
