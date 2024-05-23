@@ -31,3 +31,9 @@
 - to work a database_url is needed (.env file)
 
   <img src="notes.png" alt="drawing"/>
+
+## Budget Planner App
+- react
+- typescript
+
+<img src="budget.png" alt="drawing"/>
